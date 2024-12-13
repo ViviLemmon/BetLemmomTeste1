@@ -1,22 +1,127 @@
-export const bettors = [
-  { id: 1, nome: "João Pedro", sobrenome: "Silva", saldo: 60000 },
-  { id: 2, nome: "Maria Clara", sobrenome: "Santos", saldo: 60000 },
-  { id: 3, nome: "Pedro Henrique", sobrenome: "Oliveira", saldo: 60000 },
-  { id: 4, nome: "Ana Beatriz", sobrenome: "Ferreira", saldo: 60000 },
-  { id: 5, nome: "Lucas Gabriel", sobrenome: "Rodrigues", saldo: 60000 },
-  { id: 6, nome: "Isabela", sobrenome: "Costa", saldo: 60000 },
-  { id: 7, nome: "Matheus", sobrenome: "Almeida", saldo: 60000 },
-  { id: 8, nome: "Gabriela", sobrenome: "Carvalho", saldo: 60000 },
-  { id: 9, nome: "Rafael", sobrenome: "Martins", saldo: 60000 },
-  { id: 10, nome: "Carolina", sobrenome: "Lima", saldo: 60000 },
-  { id: 11, nome: "Bruno", sobrenome: "Pereira", saldo: 60000 },
-  { id: 12, nome: "Larissa", sobrenome: "Souza", saldo: 60000 },
-  { id: 13, nome: "Felipe", sobrenome: "Ribeiro", saldo: 60000 },
-  { id: 14, nome: "Amanda", sobrenome: "Gomes", saldo: 60000 },
-  { id: 15, nome: "Thiago", sobrenome: "Barbosa", saldo: 60000 },
-  { id: 16, nome: "Mariana", sobrenome: "Nascimento", saldo: 60000 },
-  { id: 17, nome: "Leonardo", sobrenome: "Cardoso", saldo: 60000 },
-  { id: 18, nome: "Juliana", sobrenome: "Fernandes", saldo: 60000 },
-  { id: 19, nome: "Gustavo", sobrenome: "Moreira", saldo: 60000 },
-  { id: 20, nome: "Beatriz", sobrenome: "Pinto", saldo: 60000 }
+export const bettorsData = [
+  {
+    id: 'BET001',
+    name: 'João Silva',
+    email: 'joao.silva@email.com',
+    status: 'ativo',
+    createdAt: '2023-01-15',
+    balance: 5000.00,
+    bets: [
+      {
+        id: 'APT001',
+        timestamp: '2023-12-01T14:30:00',
+        stake: 100.00,
+        combinedOdds: 2.5,
+        potentialReturn: 250.00,
+        status: 'ganhou',
+        matches: [
+          {
+            id: 'M001',
+            homeTeam: 'Flamengo',
+            awayTeam: 'Palmeiras',
+            selectedMarket: 'home',
+            odds: 1.5
+          },
+          {
+            id: 'M002',
+            homeTeam: 'São Paulo',
+            awayTeam: 'Santos',
+            selectedMarket: 'draw',
+            odds: 1.67
+          }
+        ]
+      },
+      {
+        id: 'APT002',
+        timestamp: '2023-12-02T16:00:00',
+        stake: 200.00,
+        combinedOdds: 3.2,
+        potentialReturn: 640.00,
+        status: 'perdeu',
+        matches: [
+          {
+            id: 'M003',
+            homeTeam: 'Corinthians',
+            awayTeam: 'Grêmio',
+            selectedMarket: 'away',
+            odds: 2.1
+          },
+          {
+            id: 'M004',
+            homeTeam: 'Internacional',
+            awayTeam: 'Atlético-MG',
+            selectedMarket: 'home',
+            odds: 1.52
+          }
+        ]
+      }
+    ]
+  },
+  {
+    id: 'BET002',
+    name: 'Maria Santos',
+    email: 'maria.santos@email.com',
+    status: 'ativo',
+    createdAt: '2023-02-20',
+    balance: 7500.00,
+    bets: [
+      {
+        id: 'APT003',
+        timestamp: '2023-12-03T15:00:00',
+        stake: 150.00,
+        combinedOdds: 2.8,
+        potentialReturn: 420.00,
+        status: 'ganhou',
+        matches: [
+          {
+            id: 'M005',
+            homeTeam: 'Fluminense',
+            awayTeam: 'Vasco',
+            selectedMarket: 'draw',
+            odds: 1.9
+          },
+          {
+            id: 'M006',
+            homeTeam: 'Botafogo',
+            awayTeam: 'Cruzeiro',
+            selectedMarket: 'home',
+            odds: 1.47
+          }
+        ]
+      },
+      {
+        id: 'APT004',
+        timestamp: '2023-12-04T19:30:00',
+        stake: 300.00,
+        combinedOdds: 4.1,
+        potentialReturn: 1230.00,
+        status: 'ganhou',
+        matches: [
+          {
+            id: 'M007',
+            homeTeam: 'Athletico-PR',
+            awayTeam: 'Coritiba',
+            selectedMarket: 'away',
+            odds: 2.3
+          },
+          {
+            id: 'M008',
+            homeTeam: 'Bahia',
+            awayTeam: 'Fortaleza',
+            selectedMarket: 'draw',
+            odds: 1.78
+          }
+        ]
+      }
+    ]
+  }
 ];
+
+export const getBettorById = (id) => {
+  return bettorsData.find(bettor => bettor.id === id);
+};
+
+export const getBettorBets = (id) => {
+  const bettor = getBettorById(id);
+  return bettor ? bettor.bets : [];
+};
